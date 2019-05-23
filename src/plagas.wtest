@@ -1,0 +1,43 @@
+import plagas.*
+import elementos.*
+
+test "plagas" {
+
+	var cucaracha1 = new Cucaracha(poblacion=100, pesoPromedio=9)
+	assert.equals(50,cucaracha1.nivelDeDanio())
+	assert.equals(false,cucaracha1.transmitirEnfermedades())
+	cucaracha1.efectoPlaga()
+	assert.equals(110,cucaracha1.poblacion())
+	assert.equals(11,cucaracha1.pesoPromedio())
+	
+	var pulga1 = new Pulga(poblacion=12)
+	assert.equals(24,pulga1.nivelDeDanio())
+	assert.equals(true,pulga1.transmitirEnfermedades())
+	pulga1.efectoPlaga()
+	assert.equals(13.2,pulga1.poblacion())
+	
+	var mosquito1 = new Mosquito(poblacion=27)
+	assert.equals(27,mosquito1.nivelDeDanio())
+	assert.equals(true,mosquito1.transmitirEnfermedades())
+}
+
+test "barrio" {
+	var hogar1 = new Hogar(nivelDeMugre=10,confortQueOfrece=21)
+	assert.equals(true, hogar1.esBueno())
+	
+	var huerta1 = new Huerta(capacidadDeProduccion= 25)
+	capacidadHuertas.nivel(40)
+	assert.equals(false, huerta1.esBueno())
+	
+	var mascota1 = new Mascota(nivelDeSalud=300)
+	assert.equals(true,mascota1.esBueno())
+	
+	var castelar = new Barrio()
+	castelar.agregarVarios([hogar1,huerta1,mascota1])
+	assert.equals(true,castelar.esCopado())
+	
+	
+	
+	
+	
+}
