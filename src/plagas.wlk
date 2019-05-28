@@ -3,11 +3,14 @@ import elementos.*
 class Plaga {
 	var property poblacion
 	method transmitirEnfermedades() { return poblacion >= 10 }
-	method atacar(elemento){ poblacion = poblacion + poblacion * 0.1 }
+	method atacar(elemento){ 
+		poblacion = poblacion + poblacion * 0.1
+		elemento.recibeAtaque(self)
+	}
 }
 
 class Cucaracha inherits Plaga {
-	var property pesoPromedio
+	var property pesoPromedio 
 	
 	method nivelDeDanio() {
 		return poblacion / 2
@@ -18,8 +21,8 @@ class Cucaracha inherits Plaga {
 	}
 	
 	override method atacar(elemento){
-		super(elemento)
 		pesoPromedio = pesoPromedio + 2
+		super(elemento)
 	}
 }
 
@@ -29,8 +32,11 @@ class Pulga inherits Plaga{
 	}	
 }
 
-class Garrapata {
-	
+class Garrapata inherits Pulga {
+	override method atacar(elemento) {
+		poblacion = poblacion + poblacion * 0.2
+		elemento.recibeAtaque()
+	}
 }
 
 class Mosquito inherits Plaga{
@@ -41,8 +47,4 @@ class Mosquito inherits Plaga{
 	override method transmitirEnfermedades() {
 		return super() and poblacion % 3 == 0
 	}
-	
-	method efectoPlaga(){
-		poblacion = poblacion + poblacion * 0.1
-	}	
 }
